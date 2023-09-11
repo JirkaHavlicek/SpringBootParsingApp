@@ -28,6 +28,15 @@ public class GpcReader {
     private Gpc075Repository gpc075Repository;
 
 
+    /**
+     * Processes a GPC file located at the specified URL path.
+     *
+     * This method reads the file contents from the URL, parses the data into GpcRecordList objects,
+     * and prints each GpcRecordList to the standard output.
+     *
+     * @param path The URL path to the GPC file to be processed.
+     * @throws IOException If an I/O error occurs while reading the file or processing its contents.
+     */
     public void procesGpcFile(String path) throws IOException {
         String fileContents = readFileFromUrl(path);
         List<String> list = Arrays.asList(fileContents.split(System.lineSeparator()));
@@ -35,8 +44,12 @@ public class GpcReader {
         gpcRecordList.forEach(System.out::println);
 
     }
-
-
+    /**
+     * Converts a list of strings representing GPC records into a list of GpcRecordList objects.
+     *
+     * @param list The list of strings, each representing a GPC record.
+     * @return A list of GpcRecordList objects parsed from the input strings.
+     */
     private List<GpcRecordList> StringToObject(List<String> list) {
         List<GpcRecordList> gpcRecordList = new ArrayList<>(list.size());
 
@@ -68,7 +81,14 @@ public class GpcReader {
         return gpcRecordList;
     }
 
-
+    /**
+     * Reads the contents of a file from a given URL and returns it as a string.
+     *
+     * @param path The URL path to the file to be read.
+     * @return A string containing the contents of the file.
+     * @throws IOException If an I/O error occurs while reading the file.
+     * @throws IllegalArgumentException If the specified URL does not point to an existing file.
+     */
     private String readFileFromUrl(String path) throws IOException {
         URL url = new URL(path);
         File file = new File(url.getFile());

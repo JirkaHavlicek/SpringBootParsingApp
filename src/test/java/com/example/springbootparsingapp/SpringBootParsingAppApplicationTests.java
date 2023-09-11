@@ -45,12 +45,5 @@ class SpringBootParsingAppApplicationTests {
         List<Gpc075> all075 = gpc075Repository.findAll();
         assert all075.size() == 5;
 
-
-
-
-
     }
-
-
-
 }
