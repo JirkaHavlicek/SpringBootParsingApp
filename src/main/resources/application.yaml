@@ -1,0 +1,29 @@
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/postgres?createDatabaseIfNotExist=true&serverTimezone=UTC
+  username: Admin
+  password: mysecretpassword
+  driver-class-name: org.postgresql.Driver
+spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+
+
+
+server:
+  port: 8080
+
+spring:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      jakarta.persistence.sharedCache.mode: ENABLE_SELECTIVE
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+        ejb:
+          interceptor:
+            spring_interceptor=true:
